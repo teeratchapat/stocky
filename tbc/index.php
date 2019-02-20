@@ -9,6 +9,6 @@
     <script src="main.js"></script>
 </head>
 <body>
-    Hello world
+    Hello world html
 </body>
 </html>

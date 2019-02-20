@@ -15,6 +15,9 @@ $sql = "SELECT PCode,PName FROM `product` ";
 $stmt = $mysql_db->query($sql);
 #get result
 $rows = $stmt->fetchAll();
+
+// var_dump($_SESSION["cart_product"][15]);
+// exit();
 //print_r($rows);
 $item_total = 0;
 //print ("After Sort");
@@ -262,11 +265,20 @@ if(isset($_POST['opt']))
 
                                 <tbody >
                                 <?php foreach ($rows as $row) { ?>
+
                                     <tr onclick="click_product(<?= $row['PCode'] ?>)">
                                         <td><?= $row['PCode'] ?></td>
                                         <td><?= $row['PName'] ?></td>
                                     </tr>
                                 <?php } ?>
+
+                                <!-- <?php foreach ($rows as $row) { 
+                                    echo "
+                                    <tr >
+                                        <td>{$row['PCode']}</td>
+                                        <td>{$row['PName']}</td>
+                                    </tr>";
+                                } ?> -->
                                 </tbody>
                             </table>
 

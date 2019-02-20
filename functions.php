@@ -25,19 +25,32 @@ function cart_operation($db,$product_table,$action,$code){
             case "add":
 
 
-                $itemArray =array('name' => $productByCode["PName"],
+                $itemArray =array(
+                    'name' => $productByCode["PName"],
                     'no' => $productByCode["PNo"],
                     'code' => $productByCode["PCode"],
                     'price' => $productByCode["PPrice"],
                     'quantity' => 1);
 
-                if (empty($_SESSION["cart_product"])) {
+                // if (empty($_SESSION["cart_product"])) {
+                //     $_SESSION["cart_product"][$no] = $itemArray;
+                // }else{
+                //     if (empty($_SESSION["cart_product"][$no])) {
+                //         $_SESSION["cart_product"][$no] = $itemArray;
+                //     }
+                // }
+
+
+                if (empty($_SESSION["cart_product"][$no])) {
                     $_SESSION["cart_product"][$no] = $itemArray;
                 }else{
-                    if (empty($_SESSION["cart_product"][$no])) {
-                        $_SESSION["cart_product"][$no] = $itemArray;
-                    }
+                    $_SESSION["cart_product"][$no]['quantity'] += 1;
+
                 }
+
+                // $_SESSION["cart_product"][$no] = $itemArray;
+
+
                 break;
 
             case "remove":
